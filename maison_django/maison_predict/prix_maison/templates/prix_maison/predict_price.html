@@ -1,0 +1,72 @@
+{% extends 'prix_maison/base.html' %}
+{% comment %} # 6,3.0,2400,9373,2.0,0,0,7,0,1991,98002,47.3262,-122.214 {% endcomment %}
+{% comment %} # bedrooms,  bathrooms,  sqft_living,  sqft_lot,  floors,  waterfront,view,grade,
+# sqft_basement,  yr_renovated,  zipcode,lat,long, {% endcomment %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <form method="post" class="bg-light p-4 shadow rounded">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+          <label for="{{ form.bedrooms.id_for_label }}">Nombre de chambres  &nbsp &nbsp &nbsp &nbsp</label>  
+          {{ form.bedrooms }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.bathrooms.id_for_label }}">Nombre de salles de bain &nbsp </label>  
+          {{ form.bathrooms }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.sqft_living.id_for_label }}">Surface à vivre (en pieds carrés)</label><br>
+          {{ form.sqft_living }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.sqft_lot.id_for_label }}">Surface du terrain (en pieds carrés)</label><br>
+          {{ form.sqft_lot }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.floors.id_for_label }}">Nombre d'étages &nbsp</label>
+          {{ form.floors }}
+        </div>
+        <div class="form-group mb-3 form-check">
+          {{ form.waterfront }}
+          <label class="form-check-label" for="{{ form.waterfront.id_for_label }}">&nbsp&nbsp Vue sur le lac </label> 
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.view.id_for_label }}">Qualité de la vue (de 0 à 4) &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp </label> 
+          {{ form.view }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.grade.id_for_label }}">Qualité de la construction (de 1 à 13)</label> 
+          {{ form.grade }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.sqft_basement.id_for_label }}">Surface du sous-sol (en pieds carrés)</label><br>
+          {{ form.sqft_basement }}
+        </div>
+        <div class="form-group mb-3">
+          <label for="{{ form.yr_renovated.id_for_label }}">Années depuis la rénovation ou la construction</label><br>
+          {{ form.yr_renovated }}
+        </div>
+        <a href="https://www.latlong.net/" class="btn btn-success mb-3" target="_blank">Accéder au site pour touver <br> votre Longitude et Latitude</a>
+
+        {% comment %} <div class="form-group mb-3">
+          <label for="{{ form.zipcode.id_for_label }}">Code postal</label><br>
+          {{ form.zipcode }}
+        </div> {% endcomment %}
+         <div class="form-group mb-3">
+          <label for="{{ form.lat.id_for_label }}">Latitude</label>   <br>
+          {{ form.lat }}
+        </div>
+        <div class="form-group mb-3 text-center">
+          <label for="{{ form.long.id_for_label }}">Longitude</label>  <br>
+          {{ form.long }}
+        </div> 
+        <button type="submit" class="btn btn-primary m-3 text-center">Prédire le prix</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
